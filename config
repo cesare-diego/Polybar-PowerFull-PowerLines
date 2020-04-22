@@ -1,0 +1,379 @@
+
+[colors]
+background = #ffffff
+primary = #ffb52a
+secondary = #e60053
+alert = #bd2c40
+background-alt = #444
+foreground = #dfdfdf
+foreground-alt = #555
+
+;======================;
+ ### Configurations ###
+;======================;
+
+[bar/mybar]
+;monitor = ${env:MONITOR:HDMI:1}
+width = 100%
+height = 30
+offset-x = % 
+offset-y = %
+radius = 8
+fixed-center = true
+bottom = false
+;separator = --
+
+background-0 = #200e42
+background-1 = #
+background-2 = #
+background-3 = 
+background-4 =
+background-5 = 
+background-6 = 
+background-7 = #200e42
+
+line-size = 2
+line-color = #ff0000
+
+border-size = 8
+border-color = #aa
+
+padding-left = 0
+padding-right = 0
+
+;module-margin-left = 
+module-margin-right = 
+
+scroll-up = i3-desknext
+scroll-down = i3-deskprev
+
+wm-restack = i3
+
+tray-position = right
+tray-padding = 12
+tray-background = #170f13
+tray-scale = 1
+
+;=============;
+ ### Fonts ###
+;=============;
+
+font-0 = FontAwesome:size=13
+font-1 = Ubuntu:Regular:size=13
+font-2 = unifont:fontformat=truetype:size=20:antialias=20;2
+font-3 = PowerlineSymbols:pixelsize=50;1
+font-4 = NotoColorEmoji:fontformat=truetype:scale=10:antialias=false;
+
+;===================================;
+ ### Positions end order modules ###
+;===================================;
+
+modules-left = i3 
+modules-center = 
+modules-right = txt2 uptime txt1 date txt volume
+
+;====================;
+ ### Modules left ###
+;====================;
+
+[module/i3]
+type = internal/i3
+format = <label-state><label-mode>
+
+index-sort = false
+enable-click = true 
+enable-scroll = true
+ws-icon-0 = 10;10 
+ws-icon-1 = 1;1  
+ws-icon-2 = 2;2 
+ws-icon-3 = 3;3  
+ws-icon-4 = 4;4 
+ws-icon-5 = 5;5 
+ws-icon-6 = 6;6 
+ws-icon-7 = 7;7 
+ws-icon-8 = 8;8 
+ws-icon-9 = 9;9 
+ws-icon-default =
+
+pin-workspaces = true ; Only show workspaces on the same output as the bar
+
+label-mode = " %mode% "
+label-focused = %{F#ff0000 B#200e43} %{F-}%icon% %{B#aa0B0F10 F#aaffffff} %{F-}
+
+label-visible = " %icon% "
+
+label-unfocused = " %icon% "
+label-unfocused-foreground = #ffffff
+label-unfocused-background = #200e42
+
+label-urgent = " %icon% "
+label-urgent-foreground = #ffffff
+label-urgent-background = #ff0000
+
+
+;;==============================;;
+;;       MODULES CENTER         ;;
+;;==============================;;
+
+[module/date]
+type = internal/date
+interval = 1
+
+date = " %d.%m.%y"
+time=  " %H:%M:%S"
+
+label = %date% %time%
+label-foreground = #ffffff
+label-background = #030a1c
+
+;;==============================;;
+;;        MODULES RIGHT          ;;
+;;==============================;;
+
+[module/memory]
+type = internal/memory
+format = <label><bar-used>
+label = RAM 💽 %gb_used% 
+;label-foreground = #0088CC
+label-background = #222222
+
+bar-used-width = 10
+bar-used-gradient = true
+bar-used-foreground-0 = #33FF00
+bar-used-foreground-1 = #80FF00
+bar-used-foreground-2 = #CCFF00
+bar-used-foreground-3 = #FFE500
+bar-used-foreground-4 = #FF9900
+bar-used-foreground-5 = #FF4D00
+bar-used-foreground-6 = #FF0000
+
+bar-used-indicator = |
+bar-used-indicator-font = 2
+bar-used-indicator-foreground = #fff
+bar-used-fill = ▯
+bar-used-fill-font = 2
+bar-used-empty = ▮
+bar-used-empty-font = 2
+bar-used-empty-foreground = #44
+bar-used-indicator-background = #222222
+bar-used-empty-background = #222222
+bar-used-fill-background = #222222
+
+[module/txt1]
+type = custom/text
+content = 
+content-foreground = #030a1c
+content-background = #200e40
+
+[module/uptime]
+type = custom/script
+exec = uptime | awk '{print $3}' | sed 's/,/ mim/g'
+label-background = #200e40 
+format-prefix = UpTime
+format-prefix-background = #200e40
+format-prefix-padding = 1
+
+[module/txt2]
+type = custom/text
+content = 
+content-foreground = #200e40
+
+
+[module/volume]
+type = internal/pulseaudio
+
+format-volume = <label-volume><bar-volume>
+label-volume =  %percentage%%
+label-volume-foreground = #ffffff
+label-volume-background = #002b42
+
+label-muted =  MUTE
+label-muted-foreground = #ff0000
+
+bar-volume-width = 10
+bar-volume-foreground-0 = #00FFE0
+bar-volume-foreground-1 = #00FF75
+bar-volume-foreground-2 = #00FF0A
+bar-volume-foreground-3 = #61FF00
+bar-volume-foreground-4 = #CCFF00
+bar-volume-foreground-5 = #FFC700
+bar-volume-foreground-6 = #FF5C00
+bar-volume-foreground-7 = #FF0000
+bar-volume-gradient = true
+bar-volume-indicator = |
+bar-volume-indicator-font = 2
+bar-volume-indicator-background = #002b42 
+bar-volume-fill = ─
+bar-volume-fill-font = 2
+bar-volume-fill-background = #002b42
+bar-volume-empty = ─
+bar-volume-empty-background = #002b42
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = #000000
+
+
+[module/txt]
+type = custom/text
+content = 
+content-foreground = #002b42
+content-background = #030a1c
+
+;=================================;
+ ### Configurations bar bottom ###
+;=================================;
+
+[bar/bottom]
+;monitor = ${env:MONITOR:HDMI:1}
+width = 100%
+offset-x = 
+offset-y = 
+radius = 4
+fixed-center = true
+bottom = true
+;separator = --
+
+
+background-0 = #3eadfa
+background-1 = 
+background-2 = 
+background-3 = 
+background-4 =
+background-5 = 
+background-6 = 
+background-7 = #3eadfa
+
+line-size = 2
+line-color = #ff0000
+
+border-size = 7
+border-color = #aa
+
+padding-left = 0
+padding-right = 0
+
+module-margin-left = 0 
+module-margin-right = 
+
+scroll-up = i3-desknext
+scroll-down = i3-deskprev
+
+;=============;
+ ### Fonts ###
+;=============;
+
+font-0 = FontAwesome:size=13:pixelsize=13;3
+font-1 = Ubuntu:Regular:size=13:pixelsize=13;3
+font-2 = unifont:fontformat=truetype:size=20:antialias=20;2
+font-3 = PowerlineSymbols:pixelsize=50;0
+font-4 = NotoColorEmoji:fontformat=truetype:scale=10:antialias=20;2;
+
+;===================================;
+ ### Positions end order modules ###
+;===================================;
+
+modules-left = menu kernel installeds trash atlz
+modules-center = 
+modules-right = power 
+
+;=====================;
+ ### Modules right ###
+;=====================;
+
+[module/power]
+type = custom/menu
+
+menu-0-0 = 
+menu-0-0-foreground = #FF0000 
+menu-0-0-padding = 2
+menu-0-0-background = #ffffff
+menu-0-0-exec = shutdown now
+menu-0-1 = 
+menu-0-1-foreground = #0000ff
+menu-0-1-padding = 2
+menu-0-1-background = #ffffff
+menu-0-1-exec = reboot
+menu-0-2 = 
+menu-0-2-exec = i3-msg exit
+menu-0-2-foreground = #000000
+menu-0-2-padding = 2
+menu-0-2-background = #ffffff
+
+expand-right = true
+label-open = 
+label-open-foreground = #FF0000
+label-open-padding = 2
+label-open-background = #3eadfe
+label-close = Cancel
+label-close-foreground = #ff0000
+label-close-padding = 2
+label-close-background = #3eadfe
+label-separator = |
+
+;;=============================;;
+;;        MODULES LEFT         ;;
+;;=============================;;
+
+[module/menu]
+type = custom/script
+exec = printf ""
+label-background = #003590
+label-padding = 2
+format-suffix = 
+format-suffix-foreground = #003590
+format-suffix-background = #047a7a
+interval = 120
+click-left = jgmenu_run > /dev/null 2>&1 &
+
+[module/kernel]
+type = custom/script
+exec = uname -r
+label-padding = 
+label-background = #047a7a
+format-prefix = kernel
+format-prefix-foreground = #040203
+format-prefix-padding = 2
+format-prefix-background = #047a7a
+format-suffix =   
+format-suffix-foreground = #047a7a
+format-suffix-background = #16242d
+
+
+[module/installeds]
+type = custom/script
+exec = pacman -Q | wc -l
+label-padding = 2
+label-background = #16242d
+label-foreground = #ffffff
+format-prefix = 
+format-prefix-foreground = #d34b19
+format-prefix-padding = 2
+format-prefix-background = #16242d
+format-suffix =   
+format-suffix-foreground = #16242d
+format-suffix-background = #4d0432
+
+[module/trash]
+type = custom/script
+exec = ls /var/cache/pacman/pkg| wc -l
+label-padding = 2
+label-background = #4d0432
+format-prefix = 
+format-prefix-foreground = #888888
+format-prefix-padding = 2
+format-prefix-background = #4d0432
+format-suffix =   
+format-suffix-foreground = #4d0432
+format-suffix-background = #3eadfe
+
+[module/atlz]
+type = custom/script
+exec = ~/.config/polybar/scripts/atlz.sh 
+label-padding = 2
+label-background = #3eadfe
+label-foreground = #ffffff
+format-prefix =
+format-prefix-foreground = #ff0000 
+format-prefix-background = #3eadfe
+format-prefix-padding = 2
+format-suffix =   
+format-suffix-foreground = #3eadfe
